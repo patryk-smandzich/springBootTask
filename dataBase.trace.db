@@ -1,0 +1,16 @@
+2020-01-27 16:57:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ADDRESS_TABLE 
+DROP[*] TABLE CLASS_TABLE 
+DROP TABLE MARKS_TABLE 
+DROP TABLE STUDENT_TABLE 
+DROP TABLE SUBJECT_TABLE"
+Syntax error in SQL statement "DROP TABLE ADDRESS_TABLE 
+DROP[*] TABLE CLASS_TABLE 
+DROP TABLE MARKS_TABLE 
+DROP TABLE STUDENT_TABLE 
+DROP TABLE SUBJECT_TABLE"; SQL statement:
+drop table address_table 
+drop table class_table 
+drop table marks_table 
+drop table student_table 
+drop table subject_table [42000-200]
