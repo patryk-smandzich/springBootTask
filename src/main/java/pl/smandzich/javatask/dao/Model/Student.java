@@ -1,9 +1,6 @@
 package pl.smandzich.javatask.dao.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -17,17 +14,41 @@ public class Student {
     private String sureName;
     private LocalDate birthDate;
     private Boolean dyslexia;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Clas clas;
+
+
 
     public Student(){
     }
 
 
-    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia) {
+    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas) {
         this.id = id;
         this.firstName = firstName;
         this.sureName = sureName;
         this.birthDate = birthDate;
         this.dyslexia = dyslexia;
+        this.address = address;
+        this.clas = clas;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Clas getClas() {
+        return clas;
+    }
+
+    public void setClas(Clas clas) {
+        this.clas = clas;
     }
 
     public Long getId() {

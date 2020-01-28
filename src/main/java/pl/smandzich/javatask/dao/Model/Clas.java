@@ -13,16 +13,15 @@ public class Clas {
     private Long id;
     private Long level;
     private String name;
-    private Long studentID;
+
 
     public Clas() {
     }
 
-    public Clas(Long id, Long level, String name, Long studentID){
+    public Clas(Long id, Long level, String name){
         this.id = id;
         this.level = level;
         this.name = name;
-        this.studentID = studentID;
     }
 
     public Long getId() {
@@ -49,11 +48,5 @@ public class Clas {
         this.name = name;
     }
 
-    public Long getStudentID() {
-        return studentID;
-    }
 
-    public void setStudentID(Long studentID) {
-        this.studentID = studentID;
-    }
 }

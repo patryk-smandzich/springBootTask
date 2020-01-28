@@ -27,10 +27,7 @@ public class StudentManager {
         return studentRepo.findAll();
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public  void fillDB(){
-        save(new Student(1L, "Jan", "Kowalsky", LocalDate.of(2000,12,12),true));
-    }
+
 
 
 }

@@ -1,9 +1,8 @@
 package pl.smandzich.javatask.dao.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Marks {
@@ -12,16 +11,29 @@ public class Marks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mark;
 
-    private Long subjectId;
-    private Long studentId;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "SUBJECT_MARK",
+            joinColumns = @JoinColumn(
+                    name = "SUBJECT_ID",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "MARK_ID",
+                    referencedColumnName = "mark"
+            )
+    )
+
+    private List<Subject> subjects = new ArrayList<>();
+
+
 
     public Marks() {
     }
 
-    public Marks(Long mark, Long subjectId, Long studentId){
+    public Marks(Long mark, Subject subject){
         this.mark = mark;
-        this.subjectId = subjectId;
-        this.studentId = studentId;
     }
 
     public Long getMark() {
@@ -32,19 +44,5 @@ public class Marks {
         this.mark = mark;
     }
 
-    public Long getSubjectId() {
-        return subjectId;
-    }
 
-    public void setSubjectId(Long subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
 }
