@@ -1,4 +1,4 @@
-package pl.smandzich.javatask.Model;
+package pl.smandzich.javatask.dao.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
