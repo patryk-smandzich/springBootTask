@@ -23,6 +23,7 @@ public class Address {
 
     public Address(Long id, String street, String zipCode, String city, String houseNumber) {
         this.id = id;
+        this.street = street;
         this.zipCode = zipCode;
         this.city = city;
         this.houseNumber = houseNumber;

@@ -2,6 +2,8 @@ package pl.smandzich.javatask.dao.Model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -18,6 +20,20 @@ public class Student {
     private Address address;
     @ManyToOne(cascade = CascadeType.ALL)
     private Clas clas;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name="STUDENT_MARKS",
+            joinColumns = @JoinColumn(
+                    name = "STUDENT_ID",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "MARK_ID",
+                    referencedColumnName = "id"
+            )
+    )
+
+    private List<Marks> marks = new ArrayList<>();
 
 
 
@@ -25,7 +41,7 @@ public class Student {
     }
 
 
-    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas) {
+    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas, Marks marks) {
         this.id = id;
         this.firstName = firstName;
         this.sureName = sureName;
@@ -33,6 +49,7 @@ public class Student {
         this.dyslexia = dyslexia;
         this.address = address;
         this.clas = clas;
+        this.marks = (List<Marks>) marks;
     }
 
     public Address getAddress() {
@@ -89,5 +106,13 @@ public class Student {
 
     public void setDyslexia(Boolean dyslexia) {
         this.dyslexia = dyslexia;
+    }
+
+    public List<Marks> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Marks> marks) {
+        this.marks = marks;
     }
 }

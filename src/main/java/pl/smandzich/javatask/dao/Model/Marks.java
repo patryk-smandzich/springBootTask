@@ -9,7 +9,8 @@ public class Marks {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mark;
+    private Long id;
+    private String mark;
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -21,7 +22,7 @@ public class Marks {
             ),
             inverseJoinColumns = @JoinColumn(
                     name = "MARK_ID",
-                    referencedColumnName = "mark"
+                    referencedColumnName = "id"
             )
     )
 
@@ -32,17 +33,33 @@ public class Marks {
     public Marks() {
     }
 
-    public Marks(Long mark, Subject subject){
+    public Marks(Long id, String mark, Subject subject){
+        this.id = id;
         this.mark = mark;
+        this.subjects = (List<Subject>) subject;
     }
 
-    public Long getMark() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long mark) {
+        this.id = mark;
+    }
+
+    public String getMark() {
         return mark;
     }
 
-    public void setMark(Long mark) {
+    public void setMark(String mark) {
         this.mark = mark;
     }
 
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
 
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
 }
