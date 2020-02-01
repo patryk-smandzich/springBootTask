@@ -1,10 +1,9 @@
 package pl.smandzich.javatask.dao.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -17,17 +16,56 @@ public class Student {
     private String sureName;
     private LocalDate birthDate;
     private Boolean dyslexia;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Clas clas;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name="STUDENT_MARKS",
+            joinColumns = @JoinColumn(
+                    name = "STUDENT_ID",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "MARK_ID",
+                    referencedColumnName = "id"
+            )
+    )
+
+    private List<Marks> marks = new ArrayList<>();
+
+
 
     public Student(){
     }
 
 
-    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia) {
+    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas, Marks marks) {
         this.id = id;
         this.firstName = firstName;
         this.sureName = sureName;
         this.birthDate = birthDate;
         this.dyslexia = dyslexia;
+        this.address = address;
+        this.clas = clas;
+        this.marks = (List<Marks>) marks;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Clas getClas() {
+        return clas;
+    }
+
+    public void setClas(Clas clas) {
+        this.clas = clas;
     }
 
     public Long getId() {
@@ -68,5 +106,13 @@ public class Student {
 
     public void setDyslexia(Boolean dyslexia) {
         this.dyslexia = dyslexia;
+    }
+
+    public List<Marks> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Marks> marks) {
+        this.marks = marks;
     }
 }

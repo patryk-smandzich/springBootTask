@@ -1,50 +1,65 @@
 package pl.smandzich.javatask.dao.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Marks {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mark;
+    private Long id;
+    private String mark;
 
-    private Long subjectId;
-    private Long studentId;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "SUBJECT_MARK",
+            joinColumns = @JoinColumn(
+                    name = "SUBJECT_ID",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "MARK_ID",
+                    referencedColumnName = "id"
+            )
+    )
+
+    private List<Subject> subjects = new ArrayList<>();
+
+
 
     public Marks() {
     }
 
-    public Marks(Long mark, Long subjectId, Long studentId){
+    public Marks(Long id, String mark, Subject subject){
+        this.id = id;
         this.mark = mark;
-        this.subjectId = subjectId;
-        this.studentId = studentId;
+        this.subjects = (List<Subject>) subject;
     }
 
-    public Long getMark() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long mark) {
+        this.id = mark;
+    }
+
+    public String getMark() {
         return mark;
     }
 
-    public void setMark(Long mark) {
+    public void setMark(String mark) {
         this.mark = mark;
     }
 
-    public Long getSubjectId() {
-        return subjectId;
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
-    public void setSubjectId(Long subjectId) {
-        this.subjectId = subjectId;
-    }
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

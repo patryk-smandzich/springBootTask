@@ -16,17 +16,17 @@ public class Address {
     private String zipCode;
     private String city;
     private String houseNumber;
-    private String studentID;
+
 
     public Address() {
     }
 
-    public Address(Long id, String street, String zipCode, String city, String houseNumber, String studentID) {
+    public Address(Long id, String street, String zipCode, String city, String houseNumber) {
         this.id = id;
+        this.street = street;
         this.zipCode = zipCode;
         this.city = city;
         this.houseNumber = houseNumber;
-        this.studentID = studentID;
     }
 
     public Long getId() {
@@ -69,11 +69,5 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public String getStudentID() {
-        return studentID;
-    }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
 }
