@@ -11,22 +11,8 @@ public class Marks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mark;
-
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "SUBJECT_MARK",
-            joinColumns = @JoinColumn(
-                    name = "SUBJECT_ID",
-                    referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "MARK_ID",
-                    referencedColumnName = "id"
-            )
-    )
-
-    private List<Subject> subjects = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Subject subject;
 
 
 
@@ -36,7 +22,7 @@ public class Marks {
     public Marks(Long id, String mark, Subject subject){
         this.id = id;
         this.mark = mark;
-        this.subjects = (List<Subject>) subject;
+        this.subject = subject;
     }
 
     public Long getId() {
@@ -55,11 +41,11 @@ public class Marks {
         this.mark = mark;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }
