@@ -41,7 +41,7 @@ public class Student {
     }
 
 
-    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas, Marks marks) {
+    public Student(Long id, String firstName, String sureName, LocalDate birthDate, Boolean dyslexia, Address address, Clas clas, List<Marks> marks) {
         this.id = id;
         this.firstName = firstName;
         this.sureName = sureName;
@@ -49,7 +49,7 @@ public class Student {
         this.dyslexia = dyslexia;
         this.address = address;
         this.clas = clas;
-        this.marks = (List<Marks>) marks;
+        this.marks = marks;
     }
 
     public Address getAddress() {
