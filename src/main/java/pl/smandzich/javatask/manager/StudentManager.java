@@ -15,20 +15,20 @@ public class StudentManager {
     private StudentRepo studentRepo;
 
     @Autowired
-    public StudentManager(StudentRepo studentRepo){
+    public StudentManager(StudentRepo studentRepo) {
         this.studentRepo = studentRepo;
     }
 
-    public Student save(Student student){
+    public Student save(Student student) {
         return studentRepo.save(student);
     }
 
-    public List<Student> findAll(){
+    public List<Student> findAll() {
+
         List<Student> list = new ArrayList<>();
         studentRepo.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
-
 
 
 }

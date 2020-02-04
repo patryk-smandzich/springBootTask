@@ -22,7 +22,7 @@ public class Student {
     private Clas clas;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name="STUDENT_MARKS",
+            name = "STUDENT_MARKS",
             joinColumns = @JoinColumn(
                     name = "STUDENT_ID",
                     referencedColumnName = "id"
@@ -36,8 +36,7 @@ public class Student {
     private List<Marks> marks = new ArrayList<>();
 
 
-
-    public Student(){
+    public Student() {
     }
 
 

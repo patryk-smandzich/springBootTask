@@ -15,11 +15,10 @@ public class Marks {
     private Subject subject;
 
 
-
     public Marks() {
     }
 
-    public Marks(Long id, String mark, Subject subject){
+    public Marks(Long id, String mark, Subject subject) {
         this.id = id;
         this.mark = mark;
         this.subject = subject;

@@ -18,7 +18,7 @@ public class Clas {
     public Clas() {
     }
 
-    public Clas(Long id, Long level, String name){
+    public Clas(Long id, Long level, String name) {
         this.id = id;
         this.level = level;
         this.name = name;

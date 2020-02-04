@@ -27,7 +27,7 @@ public class StudentManagerTest {
     StudentManager studentManager;
 
     @Before
-    public void init(){
+    public void init() {
         given(studentRepo.findAll()).willReturn(prepareDataFindAll());
     }
 
@@ -39,20 +39,19 @@ public class StudentManagerTest {
     }
 
     @Test
-     public void save() {
+    public void save() {
         studentManager.save(prepareDataSave());
         //then
         Assert.assertEquals(prepareDataSave().getFirstName(), "Iwan");
     }
 
 
-
-    public List<Student> prepareDataFindAll(){
+    public List<Student> prepareDataFindAll() {
         List<Marks> marksy = new ArrayList<>();
-        marksy.add(new Marks(1L, "-4", new Subject(1L,"Polski")));
-        marksy.add(new Marks(2L, "3", new Subject(2L,"Niemiecki")));
+        marksy.add(new Marks(1L, "-4", new Subject(1L, "Polski")));
+        marksy.add(new Marks(2L, "3", new Subject(2L, "Niemiecki")));
         List<Student> students = new ArrayList<>();
-        Student student = new Student(1L,"Jan","Kowalski", LocalDate.of(1996, 12, 12),
+        Student student = new Student(1L, "Jan", "Kowalski", LocalDate.of(1996, 12, 12),
                 true, new Address(1L, "1 Maja", "44-370", "Warszawa", "12/3b"), new Clas(1L, 5L, "b"),
                 marksy);
         students.add(student);
@@ -60,10 +59,10 @@ public class StudentManagerTest {
         return students;
     }
 
-    public Student prepareDataSave(){
+    public Student prepareDataSave() {
         List<Marks> marksy = new ArrayList<>();
-        marksy.add(new Marks(1L, "-4", new Subject(1L,"Polski")));
-        Student student = new Student(1L,"Iwan","Kowalski", LocalDate.of(1996, 12, 12),
+        marksy.add(new Marks(1L, "-4", new Subject(1L, "Polski")));
+        Student student = new Student(1L, "Iwan", "Kowalski", LocalDate.of(1996, 12, 12),
                 true, new Address(1L, "1 Maja", "44-370", "Warszawa", "12/3b"), new Clas(1L, 5L, "b"),
                 marksy);
         return student;
