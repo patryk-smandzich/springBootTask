@@ -4,42 +4,38 @@ Sample post, ready to copy-paste to postman (http://localhost:8081/student/all):
 
 {
         
-        "firstName": "Jakub",
-        "sureName": "Jakubowski",
-        "birthDate": "2019-11-12",
+        "firstName": "Grzegorz",
+        "sureName": "Nowak",
+        "birthDate": "1856-01-01",
         "dyslexia": false,
         "address": {
             
-            "street": "Polna",
-            "zipCode": "09-22",
-            "city": "Gliwice",
-            "houseNumber": "22/3"
+            "street": "Opolska",
+            "zipCode": "32-111",
+            "city": "Częstochowa",
+            "houseNumber": "5b"
         },
         "clas": {
             
-            "level": 1,
+            "level": 2,
             "name": "a"
         },
         "marks": [
             {
-                "mark": "5",
-                "subjects": [
-                    {
-                        "name": "Niemiecki"
-                    },
-                    {
-                        "name": "Polski"
-                    }
-                ]
+                
+                "mark": "3",
+                "subject": {
+                    
+                    "name": "Angielski"
+                }
             },
             {
-                "mark": "6",
-                "subjects": [
-                    {
-                        "name": "pol"
-                    }
-                ]
+                
+                "mark": "1",
+                "subject": {
+                    
+                    "name": "WOS"
+                }
             }
-            
         ]
     }
