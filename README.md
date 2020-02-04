@@ -1,6 +1,6 @@
 Get Students: http://localhost:8081/student
 
-Sample post, ready to copy-paste to postman (http://localhost:8081/student/all):
+Sample post, ready to copy-paste to postman (http://localhost:8081/student):
 
 {
         
