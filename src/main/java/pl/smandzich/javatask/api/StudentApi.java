@@ -8,6 +8,8 @@ import pl.smandzich.javatask.dao.Model.*;
 import pl.smandzich.javatask.manager.StudentManager;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -33,9 +35,14 @@ public class StudentApi {
 
 //    @EventListener(ApplicationReadyEvent.class)
 //    public void fillDB(){
-//        Student student = new Student(6L,"imie","nazwisko", LocalDate.of(1996, 12, 12),
-//                true, new Address(6L, "ulica", "kod", "miasto", "numer"), new Clas(6L, 5L, "name"),
-//                new Marks(6L, "-5", new Subject(6L, "subject")));
+//
+//         List<Marks> marksy = new ArrayList<>();
+//         marksy.add(new Marks(1L, "-4", new Subject(1L,"Polski")));
+//         marksy.add(new Marks(2L, "3", new Subject(2L,"Niemiecki")));
+//
+//        Student student = new Student(1L,"Jan","Kowalski", LocalDate.of(1996, 12, 12),
+//                true, new Address(1L, "1 Maja", "44-370", "Warszawa", "12/3b"), new Clas(1L, 5L, "b"),
+//                marksy);
 //        students.save(student);
 //    }
 

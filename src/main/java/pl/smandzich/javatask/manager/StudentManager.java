@@ -1,13 +1,13 @@
 package pl.smandzich.javatask.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.smandzich.javatask.dao.Model.Student;
 import pl.smandzich.javatask.dao.Repository.StudentRepo;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 public class StudentManager {
@@ -23,11 +23,11 @@ public class StudentManager {
         return studentRepo.save(student);
     }
 
-    public Iterable<Student> findAll(){
-        return studentRepo.findAll();
+    public List<Student> findAll(){
+        List<Student> list = new ArrayList<>();
+        studentRepo.findAll().iterator().forEachRemaining(list::add);
+        return list;
     }
-
-
 
 
 
